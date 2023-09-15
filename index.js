@@ -17,12 +17,16 @@ const populate_panel = () => {
     // Create the row div that we'll put buttons in
     const row = document.createElement("div");
     panel.appendChild(row);
-    panel.style.display = "flex";
-    panel.style.gap = "15px";
-    panel.style.flexDirection = "row";
+    row.style.display = "flex";
+    row.style.gap = "15px";
+    row.style.flex = "auto";
+    row.style.flexDirection = "row";
     for (let j=0; j<NUM_COLS; j++) {
       // Create a button
       const button = document.createElement("div");
+      button.style.flex = "1";
+      button.style.textAlign = "center";
+      button.style.paddingTop = "20px";
       button.style.borderRadius = "15px";
       button.style.backgroundColor = "#EE935A";
       button.textContent = labels[i][j];

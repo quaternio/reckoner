@@ -28,7 +28,10 @@
 }
 
 .panel {
+  display: flex;
   flex: auto;
-  margin: 10px;
+  flex-direction: column;
+  margin: 15px;
+  gap: 15px;
   /*background-color: #EE935A;*/
 }
