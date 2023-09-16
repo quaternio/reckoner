@@ -18,13 +18,25 @@
   height: 60vh;
   margin-top: 10vh;
   border-radius: 15px;
+  border: solid;
 }
 
 .screen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   width: 17vw;
   height: 10vh;
   margin: 20px;
   background-color: #EBBCA0;
+  padding-top: 5vh;
+  border: solid;
+}
+
+.register {
+  margin: 10px;
+  font-size: 35px;
+  font-family: monospace;
 }
 
 .panel {
@@ -34,4 +46,13 @@
   margin: 15px;
   gap: 15px;
   /*background-color: #EE935A;*/
+}
+
+button {
+  flex: 1;
+  text-align: center;
+  border-radius: 15px;
+  font-weight: bold;
+  font-family: "Helvetica";
+  background-color: #EE935A;
 }

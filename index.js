@@ -1,18 +1,20 @@
-
 const NUM_ROWS = 5;
 const NUM_COLS = 4;
+const SCREEN_SIZE = 11;
 
 const panel = document.querySelector(".panel");
+const register = document.querySelector(".register");
+
 const labels = [["C", "!", "^", "+"],
                 ["1", "2", "3", "-"],
                 ["4", "5", "6", "*"],
                 ["7", "8", "9", "/"],
-                [".", "0", "=", "="]];
+                [".", "0", "="]];
 
 /**
 * Create the button panel on the calculator
 */
-const populate_panel = () => {
+const populatePanel = () => {
   for (let i=0; i<NUM_ROWS; i++) {
     // Create the row div that we'll put buttons in
     const row = document.createElement("div");
@@ -21,18 +23,37 @@ const populate_panel = () => {
     row.style.gap = "15px";
     row.style.flex = "auto";
     row.style.flexDirection = "row";
+
+    // Put all of the buttons in panel
     for (let j=0; j<NUM_COLS; j++) {
-      // Create a button
-      const button = document.createElement("div");
-      button.style.flex = "1";
-      button.style.textAlign = "center";
-      button.style.paddingTop = "20px";
-      button.style.borderRadius = "15px";
-      button.style.backgroundColor = "#EE935A";
-      button.textContent = labels[i][j];
-      row.appendChild(button);
+      if (labels[i][j]) {
+        // Create a button
+        const button = document.createElement("button");
+        button.textContent = labels[i][j];
+        if (button.textContent === "=") {
+          // Weird, but ok!
+          button.style.flexGrow = "2.8";
+        }
+        row.appendChild(button);
+      }
     }
   }
 }
 
-populate_panel();
+const initializeListeners = (reckoner) => {
+  const buttons = document.querySelectorAll("button");
+
+  // Attach listeners to each button
+  buttons.forEach((button) => {
+    button.onclick = () => {
+      reckoner.registerToken(button.textContent); 
+      register.textContent = reckoner.bufferString()
+    }
+  });
+}
+
+
+const reckoner = new Calculator(SCREEN_SIZE);
+populatePanel();
+initializeListeners(reckoner);
+
